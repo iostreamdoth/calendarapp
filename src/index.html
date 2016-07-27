@@ -1,0 +1,85 @@
+<html ng-app="myCalendarApp">
+
+<head>
+    <link rel="stylesheet" href="/bower_components/angular-ui-notification/dist/angular-ui-notification.css">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/bower_components/fullcalendar/dist/fullcalendar.css">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="container" ng-controller="CalendarController as ccVm">
+        <div class="form-horizontal">
+            <fieldset>
+                <legend>Calendar</legend>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div ui-calendar ng-model="ccVm.calendarInfo"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="card-holder-name">Event Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" ng-model="ccVm.eventName" name="card-holder-name" id="card-holder-name" placeholder="Event Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="cvv">Event Type</label>
+                        <div class="col-sm-9">
+                            <select ng-mode="ccVm.eventType">
+                                <option value="m">Meeting</option>
+                                <option value="a">Allday</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="expiry-month">Date</label>
+                        <div class="col-sm-9">
+                            <div style="display:inline-block; min-height:290px;">
+                                <div uib-datepicker ng-model="ccVm.eventDate" class="well well-sm" datepicker-options="ccVm.options"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Start Time</label>
+                        <div class="col-sm-9">
+                            <div uib-timepicker ng-model="ccVm.startTime" ng-change="ccVm.timeChanged()" hour-step="1" minute-step="1" show-meridian="ismeridian"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Duration</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" ng-model="ccVm.duration" id="cvv" placeholder="Hours">
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <button type="button" ng-click="ccVm.addToCalendar()" class="btn btn-success">Add to calendar</button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</body>
+<footer>
+</footer>
+<!-- VENDOR JS -->
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/angular/angular.js"></script>
+<script src="/bower_components/angular-messages/angular-messages.js"></script>
+<script src="/bower_components/angular-ui-notification/dist/angular-ui-notification.js"></script>
+<script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="/bower_components/moment/moment.js"></script>
+<script src="/bower_components/fullcalendar/dist/fullcalendar.js"></script>
+<script src="/bower_components/angular-ui-calendar/src/calendar.js"></script>
+<!-- APPLICATION JS -->
+<script src="app/app.js"></script>
+<script src="app/services/calendar-service.js"></script>
+<script src="app/controllers/calendar-controller.js"></script>
+
+</html>
